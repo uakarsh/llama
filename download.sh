@@ -5,7 +5,13 @@
 
 set -e
 
-read -p "Enter the URL from email: " PRESIGNED_URL
+# Check if a URL is provided as a command-line argument
+if [ -z "$1" ]; then
+    read -p "Enter the URL from email: " PRESIGNED_URL
+else
+    PRESIGNED_URL="$1"
+fi
+
 echo ""
 read -p "Enter the list of models to download without spaces (7B,13B,70B,7B-chat,13B-chat,70B-chat), or press Enter for all: " MODEL_SIZE
 TARGET_FOLDER="."             # where all files should end up
